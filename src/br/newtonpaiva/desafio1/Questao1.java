@@ -1,4 +1,4 @@
-package br.newtonpaiva.tarefa2.questao2;
+package br.newtonpaiva.desafio1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,34 +11,33 @@ import java.util.Scanner;
     noiva). Em seguida faça a união das listas e imprima o nome de cada
     convidado por ordem alfabética.
  */
-public class Questao2 {
+public class Questao1 {
     public static void main(String[] args) throws FileNotFoundException {
-        ListaLigada listaNoiva = new ListaLigada();
-        ListaLigada listaNoivo = new ListaLigada();
-        ListaLigada listaNoivoENoiva = new ListaLigada();
+        DoublyLinkedList listaNoiva = new DoublyLinkedList();
+        DoublyLinkedList listaNoivo = new DoublyLinkedList();
+        DoublyLinkedList listaNoivoENoiva = new DoublyLinkedList();
         Scanner scanner;
 
         scanner = new Scanner(new File("./lista-noiva.txt"));
         while (scanner.hasNextLine()){
-            listaNoiva.adicionar(scanner.nextLine());
+            listaNoiva.insertLast(scanner.nextLine());
         }
 
         scanner = new Scanner(new File("./lista-noivo.txt"));
         while (scanner.hasNextLine()){
-            listaNoivo.adicionar(scanner.nextLine());
+            listaNoivo.insertLast(scanner.nextLine());
         }
         scanner.close();
 
-        for (int i = 0; i < listaNoiva.getTamanho(); i++) {
-            listaNoivoENoiva.adicionar(listaNoiva.get(i).getValor());
-            if (i < listaNoivo.getTamanho())
-                listaNoivoENoiva.adicionar(listaNoivo.get(i).getValor());
+        for (int i = 0; i < listaNoiva.length(); i++) {
+            listaNoivoENoiva.insertLast(listaNoiva.getNodeData(i));
+            if (i < listaNoivo.length())
+                listaNoivoENoiva.insertLast(listaNoivo.getNodeData(i));
         }
 
-        BubbleSortListaLigada bubbleSort = new BubbleSortListaLigada();
-        bubbleSort.sort(listaNoivoENoiva);
+        listaNoivoENoiva.sortList();
 
         System.out.println("Lista Completa em ordem alfabética: ");
-        listaNoivoENoiva.mostrarLista();
+        listaNoivoENoiva.displayForward();
     }
 }

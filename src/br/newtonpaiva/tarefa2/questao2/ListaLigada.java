@@ -1,5 +1,7 @@
 package br.newtonpaiva.tarefa2.questao2;
 
+import br.newtonpaiva.tarefa2.questao1.No;
+
 public class ListaLigada {
     private Elemento primeiro;
     private Elemento ultimo;
@@ -81,4 +83,11 @@ public class ListaLigada {
         return atual;
     }
 
+    public void mostrarLista (){
+        Elemento noTemp = primeiro;
+        while (noTemp != null){
+            System.out.println(noTemp.getValor());
+            noTemp = noTemp.getProximo();
+        }
+    }
 }
