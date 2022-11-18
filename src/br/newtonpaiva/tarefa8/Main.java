@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         int opcao;
-        String path = "./Dataset_Supermercados.csv";
+        String path = "src/br/newtonpaiva/tarefa8/Dataset_Supermercados.csv";
         Map<String, TreeMap<String, Produto>> produtosPorCategoria = getProdutosPorCategoria(path);
         sc = new Scanner(System.in);
 
